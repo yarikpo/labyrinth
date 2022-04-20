@@ -15,7 +15,6 @@ const ctx = canvas.getContext('2d');
 canvas.width = 1024;
 canvas.height = 576;
 
-ctx.fillRect(0, 0, canvas.width, canvas.height);
 
 let table = new Table({width: canvas.width, height: canvas.height, ctx: ctx});
 table.importLevel1();
@@ -29,7 +28,12 @@ let player = new Walker({
 let keys = new Keys();
 
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.beginPath();
+    ctx.rect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#222';
+    ctx.fill();
+    ctx.closePath();
+
     table.draw();
     player.draw();
 }

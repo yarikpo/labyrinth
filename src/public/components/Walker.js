@@ -1,3 +1,4 @@
+import {EmptyField} from '/components/EmptyField.js';
 import {Field} from '/components/Field.js';
 
 export class Walker {
@@ -29,12 +30,7 @@ export class Walker {
         this.ctx.closePath();
     }
 
-    update_offset(keys) {
-        // if (keys.lastPressed == 'right' && !keys.rightPressed) this.center_player();
-        // if (keys.lastPressed == 'left' && !keys.leftPressed) this.center_player();
-        // if (keys.lastPressed == 'down' && !keys.downPressed) this.center_player();
-        // if (keys.lastPressed == 'up' && !keys.upPressed) this.center_player();
-        
+    update_offset(keys) {        
         if (keys.rightPressed && !keys.leftPressed && !keys.downPressed && !keys.upPressed) {
             this.offset = {x: Walker.speed, y: 0};
             this.position.y = (this.yCord + 0.5) * Field.blockSize;
@@ -61,21 +57,71 @@ export class Walker {
         this.position.x = (this.xCord + 0.5) * Field.blockSize;
     }
 
+    openDoorA(table) {
+        for (let i = 0; i < table.field.length; ++i) {
+            for (let j = 0; j < table.field[i].length; ++j) {
+                if (table.field[i][j].type == 'key-door-A' 
+                    || table.field[i][j].type == 'blocked-door-A') {
+                    table.field[i][j] = new EmptyField({xCord: j, yCord: i, ctx: this.ctx});
+                }
+            }
+        }
+    }
+
+    openDoorB(table) {
+        for (let i = 0; i < table.field.length; ++i) {
+            for (let j = 0; j < table.field[i].length; ++j) {
+                if (table.field[i][j].type == 'key-door-B' 
+                    || table.field[i][j].type == 'blocked-door-B') {
+                    table.field[i][j] = new EmptyField({xCord: j, yCord: i, ctx: this.ctx});
+                }
+            }
+        }
+    }
+
+    openDoorC(table) {
+        for (let i = 0; i < table.field.length; ++i) {
+            for (let j = 0; j < table.field[i].length; ++j) {
+                if (table.field[i][j].type == 'key-door-C' 
+                    || table.field[i][j].type == 'blocked-door-C') {
+                    table.field[i][j] = new EmptyField({xCord: j, yCord: i, ctx: this.ctx});
+                }
+            }
+        }
+    }
+
     check_collisions(table) {
-        if (table.field[this.yCord - 1][this.xCord].type == 'blocked') {
+        if (table.field[this.yCord][this.xCord].type == 'key-door-A') this.openDoorA(table);
+        if (table.field[this.yCord][this.xCord].type == 'key-door-B') this.openDoorB(table);
+        if (table.field[this.yCord][this.xCord].type == 'key-door-C') this.openDoorC(table);
+
+
+        if (table.field[this.yCord - 1][this.xCord].type == 'blocked'
+            || table.field[this.yCord - 1][this.xCord].type == 'blocked-door-A'
+            || table.field[this.yCord - 1][this.xCord].type == 'blocked-door-B'
+            || table.field[this.yCord - 1][this.xCord].type == 'blocked-door-C') {
             if (this.offset.y < 0) this.center_player();
             this.offset.y = Math.max(0, this.offset.y);
         }
-        if (table.field[this.yCord + 1][this.xCord].type == 'blocked') {
+        if (table.field[this.yCord + 1][this.xCord].type == 'blocked'
+            || table.field[this.yCord + 1][this.xCord].type == 'blocked-door-A'
+            || table.field[this.yCord + 1][this.xCord].type == 'blocked-door-B'
+            || table.field[this.yCord + 1][this.xCord].type == 'blocked-door-C') {
             if (this.offset.y > 0) this.center_player();
             this.offset.y = Math.min(0, this.offset.y);
         }
 
-        if (table.field[this.yCord][this.xCord - 1].type == 'blocked') {
+        if (table.field[this.yCord][this.xCord - 1].type == 'blocked'
+            || table.field[this.yCord][this.xCord - 1].type == 'blocked-door-A'
+            || table.field[this.yCord][this.xCord - 1].type == 'blocked-door-B'
+            || table.field[this.yCord][this.xCord - 1].type == 'blocked-door-C') {
             if (this.offset.x < 0) this.center_player();
             this.offset.x = Math.max(0, this.offset.x);
         }
-        if (table.field[this.yCord][this.xCord + 1].type == 'blocked') {
+        if (table.field[this.yCord][this.xCord + 1].type == 'blocked'
+            || table.field[this.yCord][this.xCord + 1].type == 'blocked-door-A'
+            || table.field[this.yCord][this.xCord + 1].type == 'blocked-door-B'
+            || table.field[this.yCord][this.xCord + 1].type == 'blocked-door-C') {
             if (this.offset.x > 0) this.center_player();
             this.offset.x = Math.min(0, this.offset.x);
         }
