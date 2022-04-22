@@ -8,6 +8,7 @@ import {KeyBField} from '/components/KeyBField.js';
 import {KeyCField} from '/components/KeyCField.js';
 import {Field} from '/components/Field.js';
 import {FinishField} from '/components/FinishField.js';
+import {HealField} from '/components/HealField.js';
 
 import map1 from '/levels/level01.json' assert { type: "json" };
 import map2 from '/levels/level02.json' assert { type: "json" };
@@ -79,6 +80,7 @@ export class Table {
                 if (map[i][j] == 'C') this.field[i][j] = new DoorCField({xCord: j, yCord: i, ctx: this.ctx});
                 if (map[i][j] == 'c') this.field[i][j] = new KeyCField({xCord: j, yCord: i, ctx: this.ctx});
                 if (map[i][j] == 'F') this.field[i][j] = new FinishField({xCord: j, yCord: i, ctx: this.ctx});
+                if (map[i][j] == 'h') this.field[i][j] = new HealField({xCord: j, yCord: i, ctx: this.ctx});
             }
         }
 

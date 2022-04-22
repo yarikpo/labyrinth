@@ -16,6 +16,7 @@ export class Walker {
 
         this.color = 'yellow';
         this.win = false;
+        this.lifes = 1;
     }
 
     draw() {
@@ -28,6 +29,16 @@ export class Walker {
         );
         this.ctx.fillStyle = this.color;
         this.ctx.fill();        
+        this.ctx.closePath();
+
+        this.drawLives();
+    }
+
+    drawLives() {
+        this.ctx.beginPath();
+        this.ctx.font = '16px Helvetica';
+        this.ctx.fillStyle = '#efefef';
+        this.ctx.fillText('Lives: ' + this.lifes, 10, 20);
         this.ctx.closePath();
     }
 
@@ -136,6 +147,10 @@ export class Walker {
         if (table.field[this.yCord][this.xCord].type == 'finish') {
             if (!this.win) this.center_player();
             this.winGame();
+        }
+        if (table.field[this.yCord][this.xCord].type == 'heal') {
+            ++this.lifes;
+            table.field[this.yCord][this.xCord] = new EmptyField({xCord: this.xCord, yCord: this.yCord, ctx: this.ctx});
         }
     }
 
