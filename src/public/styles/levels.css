@@ -1,7 +1,11 @@
-#game {
-    display: block;
-    margin: 0 auto;
-    background-color: #000;
+* {
+    color: #EFEFEF;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: #3E1A03;
 }
 
 .menu {
@@ -30,14 +34,4 @@
     text-align: center;
     font-size: 3em;
     text-decoration: none;
-}
-
-* {
-    color: #EFEFEF;
-}
-
-html, body {
-    margin: 0;
-    padding: 0;
-    background-color: #3E1A03;
 }

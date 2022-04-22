@@ -6,11 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game</title>
 
-    <link rel="stylesheet" href="index.css">
+    <!-- <link rel="stylesheet" href="index.css"> -->
     <link rel="stylesheet" href="/styles/game.css">
 </head>
 <body>
     <canvas id="game">CANVAS</canvas>
     <script src="./index.js" type="module"></script>
+
+    <div class="menu">
+        
+        <div><button onclick="myclick(this);" value="64">64</button></div>
+        <div><button onclick="myclick(this);" value="32">32</button></div>
+        <div><button onclick="myclick(this);" value="16">16</button></div>
+        <div><button onclick="myclick(this);" value="8">8</button></div>
+        <div><button onclick="prevLevel(this);" value=""> <- </button></div>
+        <div style="display: none;" id="nextLevel"><button onclick="nextLevel(this);" value="">-></button></div>
+
+    </div>
+    <a href="/" class="span-body">Home</a>
+    <script>
+        
+        function myclick(e) {
+            console.log(e.value);
+            localStorage.setItem('blockSize', e.value);
+            window.location.href = 'http://localhost:5000/game.html';
+        }
+
+        function nextLevel(e) {
+            // let el = document.getElementById('nextLevel');
+            // el.style.display = 'none';
+            localStorage.setItem('level', Math.min(9, parseInt(localStorage.getItem('level')) + 1));
+            window.location.href = 'http://localhost:5000/game.html';
+        }
+
+        function prevLevel() {
+            // document.getElementById('nextLevel').style.display = 'block';
+            localStorage.setItem('level', Math.max(1, parseInt(localStorage.getItem('level')) - 1));
+            window.location.href = 'http://localhost:5000/game.html';
+        }
+    </script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 export class Field {
 
-    static blockSize = 64;
+    static blockSize = parseInt(localStorage.getItem('blockSize')) || 64;
 
     constructor({xCord, yCord, ctx}) {
         // throw new Error("You can't create object from abstract class #- Field -#.");

@@ -7,7 +7,7 @@ import {Keys} from '/components/Keys.js';
 
 import data from '/levels/level01.json' assert { type: "json" };
 
-console.log("Block - 64x64");
+console.log(`Block - ${localStorage.getItem('blockSize') || '64'}x${localStorage.getItem('blockSize') || '64'}`);
 
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
@@ -17,10 +17,10 @@ canvas.height = 576;
 
 
 let table = new Table({width: canvas.width, height: canvas.height, ctx: ctx});
-table.importLevel1();
+table.importLevel(parseInt(localStorage.getItem('level')));
 
 let player = new Walker({
-    position: {x: 200, y: 400},
+    position: {x: parseInt(localStorage.getItem('blockSize')) * 1.5, y: canvas.height - parseInt(localStorage.getItem('blockSize')) * 1.5},
     ctx: ctx,
     offset: {x: 0, y: 0}
 });
@@ -83,19 +83,15 @@ window.addEventListener('keyup', (event) => {
     switch(event.keyCode) {
         case 39:
             keys.rightPressed = false;
-            // keys.lastPressed = 'right';
             break;
         case 40:
             keys.downPressed = false;
-            // keys.lastPressed = 'down';
             break;
         case 37:
             keys.leftPressed = false;
-            // keys.lastPressed = 'left';
             break;
         case 38:
             keys.upPressed = false;
-            // keys.lastPressed = 'up';
             break;
         default:
             console.log(keys);
