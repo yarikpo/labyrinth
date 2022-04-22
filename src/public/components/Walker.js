@@ -108,6 +108,12 @@ export class Walker {
         document.getElementById('nextLevel').style.display = 'block';
     }
 
+    loseGame() {
+        if (this.win) return;
+        alert('You lost!');
+        window.location.href = 'http://localhost:5000/game.html';
+    }
+
     check_collisions(table) {
         if (table.field[this.yCord][this.xCord].type == 'key-door-A') this.openDoorA(table);
         if (table.field[this.yCord][this.xCord].type == 'key-door-B') this.openDoorB(table);
@@ -151,6 +157,11 @@ export class Walker {
         if (table.field[this.yCord][this.xCord].type == 'heal') {
             ++this.lifes;
             table.field[this.yCord][this.xCord] = new EmptyField({xCord: this.xCord, yCord: this.yCord, ctx: this.ctx});
+        }
+        if (table.field[this.yCord][this.xCord].type == 'bomb') {
+            --this.lifes;
+            table.field[this.yCord][this.xCord] = new EmptyField({xCord: this.xCord, yCord: this.yCord, ctx: this.ctx});
+            if (this.lifes < 1) this.loseGame();
         }
     }
 
