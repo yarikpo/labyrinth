@@ -17,6 +17,7 @@ export class Walker {
         this.color = 'yellow';
         this.win = false;
         this.lifes = 1;
+        this.coins = 0;
     }
 
     draw() {
@@ -32,6 +33,7 @@ export class Walker {
         this.ctx.closePath();
 
         this.drawLives();
+        this.drawPoints();
     }
 
     drawLives() {
@@ -39,6 +41,14 @@ export class Walker {
         this.ctx.font = '16px Helvetica';
         this.ctx.fillStyle = '#efefef';
         this.ctx.fillText('Lives: ' + this.lifes, 10, 20);
+        this.ctx.closePath();
+    }
+
+    drawPoints() {
+        this.ctx.beginPath();
+        this.ctx.font = '16px Helvetica';
+        this.ctx.fillStyle = '#efefef';
+        this.ctx.fillText('Points: ' + this.coins, 950, 20);
         this.ctx.closePath();
     }
 
@@ -162,6 +172,10 @@ export class Walker {
             --this.lifes;
             table.field[this.yCord][this.xCord] = new EmptyField({xCord: this.xCord, yCord: this.yCord, ctx: this.ctx});
             if (this.lifes < 1) this.loseGame();
+        }
+        if (table.field[this.yCord][this.xCord].type == 'coin') {
+            ++this.coins;
+            table.field[this.yCord][this.xCord] = new EmptyField({xCord: this.xCord, yCord: this.yCord, ctx: this.ctx});
         }
     }
 

@@ -10,6 +10,7 @@ import {Field} from '/components/Field.js';
 import {FinishField} from '/components/FinishField.js';
 import {HealField} from '/components/HealField.js';
 import {BombField} from '/components/BombField.js';
+import {CoinField} from '/components/CoinField.js';
 
 import map1 from '/levels/level01.json' assert { type: "json" };
 import map2 from '/levels/level02.json' assert { type: "json" };
@@ -83,6 +84,7 @@ export class Table {
                 if (map[i][j] == 'F') this.field[i][j] = new FinishField({xCord: j, yCord: i, ctx: this.ctx});
                 if (map[i][j] == 'h') this.field[i][j] = new HealField({xCord: j, yCord: i, ctx: this.ctx});
                 if (map[i][j] == 'd') this.field[i][j] = new BombField({xCord: j, yCord: i, ctx: this.ctx});
+                if (map[i][j] == 'p') this.field[i][j] = new CoinField({xCord: j, yCord: i, ctx: this.ctx});
             }
         }
 
