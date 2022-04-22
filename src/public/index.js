@@ -15,6 +15,16 @@ const ctx = canvas.getContext('2d');
 canvas.width = 1024;
 canvas.height = 576;
 
+localStorage.setItem('rank1', 'undefined');
+localStorage.setItem('rank2', 'undefined');
+localStorage.setItem('rank3', 'undefined');
+localStorage.setItem('rank4', 'undefined');
+localStorage.setItem('rank5', 'undefined');
+localStorage.setItem('rank6', 'undefined');
+localStorage.setItem('rank7', 'undefined');
+localStorage.setItem('rank8', 'undefined');
+localStorage.setItem('rank9', 'undefined');
+
 
 let table = new Table({width: canvas.width, height: canvas.height, ctx: ctx});
 table.importLevel(parseInt(localStorage.getItem('level')));
