@@ -44,7 +44,12 @@ export class Table {
         console.log(this.field);
     }
 
+    enterConsole() {
+        console.log(this.field);
+    }
+
     draw() {
+        // this.enterConsole();
         for (let i = 0; i < this.field.length; ++i) {
             for (let j = 0; j < this.field[i].length; ++j) {
                 this.field[i][j].draw();

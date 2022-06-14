@@ -15,21 +15,43 @@
 
     <div class="menu">
         
-        <div><button onclick="myclick(this);" value="64">64</button></div>
-        <div><button onclick="myclick(this);" value="32">32</button></div>
-        <div><button onclick="myclick(this);" value="16">16</button></div>
-        <div><button onclick="myclick(this);" value="8">8</button></div>
+        <div><button id="64btn" class="sizeButton" onclick="myclick(this);" value="64">64</button></div>
+        <div><button id="32btn" class="sizeButton" onclick="myclick(this);" value="32">32</button></div>
+        <div><button id="16btn" class="sizeButton" onclick="myclick(this);" value="16">16</button></div>
+        <div><button id="8btn" class="sizeButton" onclick="myclick(this);" value="8">8</button></div>
         <div><button onclick="prevLevel(this);" value=""> <- </button></div>
         <div style="display: none;" id="nextLevel"><button onclick="nextLevel(this);" value="">-></button></div>
 
     </div>
     <a href="/" class="span-body">Home</a>
     <script>
+
+        onLoad();
+
+        function onLoad() {
+            let buttons = document.getElementsByClassName('sizeButton');
+            Array.from(buttons).forEach(button => {
+                button.style.backgroundColor = '#333';
+            });
+            // e.style.backgroundColor = '#666';
+            document.getElementById('64btn').style.backgroundColor = parseInt(localStorage.getItem('blockSize')) === 64 ? '#666' : '#333';
+            document.getElementById('32btn').style.backgroundColor = parseInt(localStorage.getItem('blockSize')) === 32 ? '#666' : '#333';
+            document.getElementById('16btn').style.backgroundColor = parseInt(localStorage.getItem('blockSize')) === 16 ? '#666' : '#333';
+            document.getElementById('8btn').style.backgroundColor = parseInt(localStorage.getItem('blockSize')) === 8 ? '#666' : '#333';
+        }
         
         function myclick(e) {
             console.log(e.value);
+
+            let buttons = document.getElementsByClassName('sizeButton');
+            Array.from(buttons).forEach(button => {
+                button.style.backgroundColor = '#333';
+            });
+            e.style.backgroundColor = '#666';
+
             localStorage.setItem('blockSize', e.value);
             window.location.href = 'http://localhost:5000/game.html';
+            
         }
 
         function nextLevel(e) {
