@@ -4,7 +4,7 @@ export class Keys {
         this.downPressed = false;
         this.leftPressed = false;
         this.upPressed = false;
-        this.lastPressed = 'none';
+        // this.lastPressed = 'none';
     }
 }
 
