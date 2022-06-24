@@ -15,15 +15,30 @@ const ctx = canvas.getContext('2d');
 canvas.width = 1024;
 canvas.height = 576;
 
-localStorage.setItem('rank1', 'undefined');
-localStorage.setItem('rank2', 'undefined');
-localStorage.setItem('rank3', 'undefined');
-localStorage.setItem('rank4', 'undefined');
-localStorage.setItem('rank5', 'undefined');
-localStorage.setItem('rank6', 'undefined');
-localStorage.setItem('rank7', 'undefined');
-localStorage.setItem('rank8', 'undefined');
-localStorage.setItem('rank9', 'undefined');
+for (let i = 1; i < 10; ++i) {
+    if (localStorage.getItem('rank' + i) == null) localStorage.setItem('rank' + i, 'undefined');
+    if (localStorage.getItem('points' + i) == null) localStorage.setItem('points' + i, '0');
+}
+
+// if (localStorage.getItem('rank1') == null) localStorage.setItem('rank1', 'undefined');
+// localStorage.setItem('rank2', 'undefined');
+// localStorage.setItem('rank3', 'undefined');
+// localStorage.setItem('rank4', 'undefined');
+// localStorage.setItem('rank5', 'undefined');
+// localStorage.setItem('rank6', 'undefined');
+// localStorage.setItem('rank7', 'undefined');
+// localStorage.setItem('rank8', 'undefined');
+// localStorage.setItem('rank9', 'undefined');
+
+// if (localStorage.getItem('points1') == null) localStorage.setItem('points1', '0');
+// localStorage.setItem('points2', '0');
+// localStorage.setItem('points3', '0');
+// localStorage.setItem('points4', '0');
+// localStorage.setItem('points5', '0');
+// localStorage.setItem('points6', '0');
+// localStorage.setItem('points7', '0');
+// localStorage.setItem('points8', '0');
+// localStorage.setItem('points9', '0');
 
 
 let table = new Table({width: canvas.width, height: canvas.height, ctx: ctx});
@@ -108,3 +123,4 @@ window.addEventListener('keyup', (event) => {
             console.log(keys);
     }
 });
+

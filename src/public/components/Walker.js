@@ -103,9 +103,25 @@ export class Walker {
     }
 
     winGame() {
+
+        if (this.win) return;
+
+        let personName = prompt("Please enter your name", "Anonymous");
+        let text;
+        if (personName == null || personName == "") person = "Anonymous";
+
+        let level = localStorage.getItem('level');
+
+        if (this.coins > parseInt(localStorage.getItem('points' + level))) {
+            localStorage.setItem('points' + level, this.coins);
+            localStorage.setItem('rank' + level, personName);
+        }
+
+
         if (!this.win) alert('You won!');
         this.win = true;
         document.getElementById('nextLevel').style.display = 'block';
+        
     }
 
     loseGame() {

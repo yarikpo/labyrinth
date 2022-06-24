@@ -12,12 +12,16 @@
     <div class="menu">
         <span>MENU</span>
         <ul>
-            <li class="menu-item"><a href="/game.html">Play</a></li>
+            <li id="play" style="display: none;" class="menu-item"><a href="/game.html">Play</a></li>
             <li class="menu-item"><a href="/levels.html">Levels</a></li>
             <li class="menu-item"><a href="/records.html">Records</a></li>
             <li class="menu-item"><a href="#">Name: </a></li>
         </ul>
     </div>
     <footer></footer>
+
+    <script>
+        if (localStorage.getItem('level') != null) document.getElementById('play').style.display = 'block';
+    </script>
 </body>
 </html>
