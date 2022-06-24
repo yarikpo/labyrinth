@@ -79,37 +79,27 @@ export class Walker {
         this.position.x = (this.xCord + 0.5) * Field.blockSize;
     }
 
-    openDoorA(table) {
+    openDoor(table, door) {
         for (let i = 0; i < table.field.length; ++i) {
             for (let j = 0; j < table.field[i].length; ++j) {
-                if (table.field[i][j].type == 'key-door-A' 
-                    || table.field[i][j].type == 'blocked-door-A') {
+                if (table.field[i][j].type == 'key-door-' + door 
+                    || table.field[i][j].type == 'blocked-door-' + door) {
                     table.field[i][j] = new EmptyField({xCord: j, yCord: i, ctx: this.ctx});
                 }
             }
         }
+    }
+
+    openDoorA(table) {
+        this.openDoor(table, 'A');
     }
 
     openDoorB(table) {
-        for (let i = 0; i < table.field.length; ++i) {
-            for (let j = 0; j < table.field[i].length; ++j) {
-                if (table.field[i][j].type == 'key-door-B' 
-                    || table.field[i][j].type == 'blocked-door-B') {
-                    table.field[i][j] = new EmptyField({xCord: j, yCord: i, ctx: this.ctx});
-                }
-            }
-        }
+        this.openDoor(table, 'B');
     }
 
     openDoorC(table) {
-        for (let i = 0; i < table.field.length; ++i) {
-            for (let j = 0; j < table.field[i].length; ++j) {
-                if (table.field[i][j].type == 'key-door-C' 
-                    || table.field[i][j].type == 'blocked-door-C') {
-                    table.field[i][j] = new EmptyField({xCord: j, yCord: i, ctx: this.ctx});
-                }
-            }
-        }
+        this.openDoor(table, 'C');
     }
 
     winGame() {
