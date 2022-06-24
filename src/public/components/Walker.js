@@ -186,6 +186,10 @@ export class Walker {
         this.xCord = Math.floor(this.position.x / Field.blockSize);
         this.yCord = Math.floor(this.position.y / Field.blockSize);
     }
+
+    drawConsole() {
+        document.getElementById('myConsole').rows[this.yCord].cells[this.xCord].innerHTML = "P";
+    }
 }
 
 export default Walker;

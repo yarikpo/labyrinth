@@ -10,7 +10,11 @@ export class Field {
     }
 
     draw() {
-        throw new Error("You have to implement method #- draw -# in abstract class #- Field -#.")
+        throw new Error("You have to implement method #- draw -# in abstract class #- Field -#.");
+    }
+
+    drawConsole() {
+        throw new Error("You have to implement method #- drawConsole -# in abstract class #- Field -#.");
     }
 }
 

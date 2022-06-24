@@ -46,6 +46,7 @@ function draw() {
 
     table.draw();
     player.draw();
+    player.drawConsole();
 }
 
 function update() {

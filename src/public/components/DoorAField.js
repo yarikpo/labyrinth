@@ -16,6 +16,10 @@ export class DoorAField extends Field {
         this.ctx.fill();
         this.ctx.closePath();
     }
+
+    drawConsole() {
+        document.getElementById('myConsole').rows[this.yCord].cells[this.xCord].innerHTML = "A";
+    }
 }
 
 export default DoorAField;

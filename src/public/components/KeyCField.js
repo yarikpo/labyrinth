@@ -23,6 +23,10 @@ export class KeyCField extends Field {
         this.ctx.fill();
         this.ctx.closePath();
     }
+
+    drawConsole() {
+        document.getElementById('myConsole').rows[this.yCord].cells[this.xCord].innerHTML = "c";
+    }
 }
 
 export default KeyCField;

@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="/styles/game.css">
 </head>
 <body>
+
+    <table id="myConsole" border="1"> 
+    </table>
     <canvas id="game">CANVAS</canvas>
     <script src="./index.js" type="module"></script>
 
@@ -29,6 +32,7 @@
         onLoad();
 
         function onLoad() {
+            createTable();
             let buttons = document.getElementsByClassName('sizeButton');
             Array.from(buttons).forEach(button => {
                 button.style.backgroundColor = '#333';
@@ -65,6 +69,22 @@
             // document.getElementById('nextLevel').style.display = 'block';
             localStorage.setItem('level', Math.max(1, parseInt(localStorage.getItem('level')) - 1));
             window.location.href = 'http://localhost:5000/game.html';
+        }
+
+        function createTable() {
+            let height = 9 * 64 / parseInt(localStorage.getItem('blockSize'));
+            let width = 16 * 64 / parseInt(localStorage.getItem('blockSize'));
+
+            for (let i = 0; i < height; ++i) {
+                let x = document.getElementById('myConsole').insertRow(i);
+                for (let j = 0; j < width; ++j) {
+                    let y = x.insertCell(j);
+                    // y.innerHTML = "Row-" + i + " Column-" + j;
+                    y.innerHTML = 'X';
+                }
+            }
+
+            // document.getElementById('myConsole').rows[5].cells[7].innerHTML = "O";
         }
     </script>
 </body>

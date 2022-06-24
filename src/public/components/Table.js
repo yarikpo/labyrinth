@@ -11,6 +11,7 @@ import {FinishField} from '/components/FinishField.js';
 import {HealField} from '/components/HealField.js';
 import {BombField} from '/components/BombField.js';
 import {CoinField} from '/components/CoinField.js';
+import {Walker} from '/components/Walker.js';
 
 import map1 from '/levels/level01.json' assert { type: "json" };
 import map2 from '/levels/level02.json' assert { type: "json" };
@@ -53,6 +54,7 @@ export class Table {
         for (let i = 0; i < this.field.length; ++i) {
             for (let j = 0; j < this.field[i].length; ++j) {
                 this.field[i][j].draw();
+                this.field[i][j].drawConsole();
             }
         }
     }

@@ -4,6 +4,11 @@
     background-color: #000;
 }
 
+#myConsole {
+    margin: 0px auto;
+    background-color: #000;
+}
+
 .menu {
     display: flex;
     flex-wrap: wrap;
