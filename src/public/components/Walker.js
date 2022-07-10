@@ -107,7 +107,7 @@ export class Walker {
         if (this.win) return;
 
         let personName = prompt("Please enter your name", "Anonymous");
-        let text;
+        
         if (personName == null || personName == "") person = "Anonymous";
 
         let level = localStorage.getItem('level');

@@ -24,16 +24,11 @@
     </div>
 
     <script>
-        document.getElementById('level1').innerHTML = document.getElementById('level1').innerHTML + ' ' + localStorage.getItem('rank1') + ' ' + localStorage.getItem('points1');
-        document.getElementById('level2').innerHTML = document.getElementById('level2').innerHTML + ' ' + localStorage.getItem('rank2') + ' ' + localStorage.getItem('points2');
-        document.getElementById('level3').innerHTML = document.getElementById('level3').innerHTML + ' ' + localStorage.getItem('rank3') + ' ' + localStorage.getItem('points3');
-        document.getElementById('level4').innerHTML = document.getElementById('level4').innerHTML + ' ' + localStorage.getItem('rank4') + ' ' + localStorage.getItem('points4');
-        document.getElementById('level5').innerHTML = document.getElementById('level5').innerHTML + ' ' + localStorage.getItem('rank5') + ' ' + localStorage.getItem('points5');
-        document.getElementById('level6').innerHTML = document.getElementById('level6').innerHTML + ' ' + localStorage.getItem('rank6') + ' ' + localStorage.getItem('points6');
-        document.getElementById('level7').innerHTML = document.getElementById('level7').innerHTML + ' ' + localStorage.getItem('rank7') + ' ' + localStorage.getItem('points7');
-        document.getElementById('level8').innerHTML = document.getElementById('level8').innerHTML + ' ' + localStorage.getItem('rank8') + ' ' + localStorage.getItem('points8');
-        document.getElementById('level9').innerHTML = document.getElementById('level9').innerHTML + ' ' + localStorage.getItem('rank9') + ' ' + localStorage.getItem('points9');
-    
+        
+        for (let i = 1; i < 10; ++i) {
+            document.getElementById('level' + i).innerHTML = document.getElementById('level' + i).innerHTML + ' ' + localStorage.getItem('rank' + i) + ' ' + localStorage.getItem('points' + i);
+        }
+
         function myclick(e) {
             window.location.href = 'http://localhost:5000/';
         }
