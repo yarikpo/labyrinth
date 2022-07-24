@@ -137,7 +137,7 @@ export class Walker {
 
 
         let blockedList = ['blocked', 'blocked-door-A', 'blocked-door-B', 'blocked-door-C'];
-        blockedList.includes(table.field[this.yCord][this.xCord + 1].type)
+        
         if (blockedList.includes(table.field[this.yCord - 1][this.xCord].type)) {
             if (this.offset.y < 0) this.center_player();
             this.offset.y = Math.max(0, this.offset.y);
