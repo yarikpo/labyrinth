@@ -26,7 +26,7 @@
     <script>
         
         for (let i = 1; i < 10; ++i) {
-            document.getElementById('level' + i).innerHTML = document.getElementById('level' + i).innerHTML + ' ' + localStorage.getItem('rank' + i) + ' ' + localStorage.getItem('points' + i);
+            document.getElementById('level' + i).innerHTML+= ' ' + localStorage.getItem('rank' + i) + ' ' + localStorage.getItem('points' + i);
         }
 
         function myclick(e) {

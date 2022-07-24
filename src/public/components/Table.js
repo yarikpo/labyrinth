@@ -61,16 +61,13 @@ export class Table {
     
 
     importLevel(levelNumber) {
-        let map = map1.map;
-        map = levelNumber == 1 ? map1.map : map;
-        map = levelNumber == 2 ? map2.map : map;
-        map = levelNumber == 3 ? map3.map : map;
-        map = levelNumber == 4 ? map4.map : map;
-        map = levelNumber == 5 ? map5.map : map;
-        map = levelNumber == 6 ? map6.map : map;
-        map = levelNumber == 7 ? map7.map : map;
-        map = levelNumber == 8 ? map8.map : map;
-        map = levelNumber == 9 ? map9.map : map;
+
+        let maps = [map1, map2, map3, map4, map5, map6, map7, map8, map9];
+        let map = maps[0].map;
+
+        for (let i = 0; i < 9; ++i) {
+            map = levelNumber == i + 1 ? maps[i].map : map;
+        }
 
         console.log(map);
 
