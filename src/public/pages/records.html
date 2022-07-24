@@ -10,20 +10,20 @@
 <body>
     <div class="menu">
         <span class="span-body">MENU</span>
-        <ul>
-            <li onclick="myclick();" id="level1" class="menu-item">1 Level: </li>
-            <li onclick="myclick();" id="level2" class="menu-item">2 Level: </li>
-            <li onclick="myclick();" id="level3" class="menu-item">3 Level: </li>
-            <li onclick="myclick();" id="level4" class="menu-item">4 Level: </li>
-            <li onclick="myclick();" id="level5" class="menu-item">5 Level: </li>
-            <li onclick="myclick();" id="level6" class="menu-item">6 Level: </li>
-            <li onclick="myclick();" id="level7" class="menu-item">7 Level: </li>
-            <li onclick="myclick();" id="level8" class="menu-item">8 Level: </li>
-            <li onclick="myclick();" id="level9" class="menu-item">9 Level: </li>
+        <ul id="recs">
+            
         </ul>
     </div>
 
     <script>
+
+        let recs = document.getElementById('recs');
+        for (let i = 1; i < 10; ++i) {
+            let tag = document.createElement('li');
+            tag.setAttribute('onclick', 'myclick();'); tag.setAttribute('id', 'level' + i); tag.setAttribute('class', 'menu-item');
+            tag.appendChild(document.createTextNode(i + ' Level: '));
+            recs.appendChild(tag);
+        }
         
         for (let i = 1; i < 10; ++i) {
             document.getElementById('level' + i).innerHTML+= ' ' + localStorage.getItem('rank' + i) + ' ' + localStorage.getItem('points' + i);

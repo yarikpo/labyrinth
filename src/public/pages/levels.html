@@ -10,9 +10,9 @@
 </head>
 <body>
     <span class="span-body">Levels:</span>
-    <div class="menu">
+    <div id="levels" class="menu">
         
-        <div><button onclick="myclick(this);" value="1">1</button></div>
+        <!-- <div><button onclick="myclick(this);" value="1">1</button></div>
         <div><button onclick="myclick(this);" value="2">2</button></div>
         <div><button onclick="myclick(this);" value="3">3</button></div>
         <div><button onclick="myclick(this);" value="4">4</button></div>
@@ -20,10 +20,20 @@
         <div><button onclick="myclick(this);" value="6">6</button></div>
         <div><button onclick="myclick(this);" value="7">7</button></div>
         <div><button onclick="myclick(this);" value="8">8</button></div>
-        <div><button onclick="myclick(this);" value="9">9</button></div>
+        <div><button onclick="myclick(this);" value="9">9</button></div> -->
     </div>
     <a href="/" class="span-body">Home</a>
     <script>
+
+        let levels = document.getElementById('levels');
+        for (let i = 1; i < 10; ++i) {
+            let divTag = document.createElement('div');
+            let tag = document.createElement('button');
+            tag.setAttribute('onclick', 'myclick(this);'); tag.setAttribute('value', i);
+            tag.appendChild(document.createTextNode(i));
+            divTag.appendChild(tag);
+            levels.appendChild(divTag);
+        }
         function myclick(e) {
             console.log(e.value);
             localStorage.setItem('level', e.value);
