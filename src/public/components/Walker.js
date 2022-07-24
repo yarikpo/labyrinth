@@ -136,32 +136,22 @@ export class Walker {
         if (table.field[this.yCord][this.xCord].type == 'key-door-C') this.openDoorC(table);
 
 
-        if (table.field[this.yCord - 1][this.xCord].type == 'blocked'
-            || table.field[this.yCord - 1][this.xCord].type == 'blocked-door-A'
-            || table.field[this.yCord - 1][this.xCord].type == 'blocked-door-B'
-            || table.field[this.yCord - 1][this.xCord].type == 'blocked-door-C') {
+        let blockedList = ['blocked', 'blocked-door-A', 'blocked-door-B', 'blocked-door-C'];
+        blockedList.includes(table.field[this.yCord][this.xCord + 1].type)
+        if (blockedList.includes(table.field[this.yCord - 1][this.xCord].type)) {
             if (this.offset.y < 0) this.center_player();
             this.offset.y = Math.max(0, this.offset.y);
         }
-        if (table.field[this.yCord + 1][this.xCord].type == 'blocked'
-            || table.field[this.yCord + 1][this.xCord].type == 'blocked-door-A'
-            || table.field[this.yCord + 1][this.xCord].type == 'blocked-door-B'
-            || table.field[this.yCord + 1][this.xCord].type == 'blocked-door-C') {
+        if (blockedList.includes(table.field[this.yCord + 1][this.xCord].type)) {
             if (this.offset.y > 0) this.center_player();
             this.offset.y = Math.min(0, this.offset.y);
         }
 
-        if (table.field[this.yCord][this.xCord - 1].type == 'blocked'
-            || table.field[this.yCord][this.xCord - 1].type == 'blocked-door-A'
-            || table.field[this.yCord][this.xCord - 1].type == 'blocked-door-B'
-            || table.field[this.yCord][this.xCord - 1].type == 'blocked-door-C') {
+        if (blockedList.includes(table.field[this.yCord][this.xCord - 1].type)) {
             if (this.offset.x < 0) this.center_player();
             this.offset.x = Math.max(0, this.offset.x);
         }
-        if (table.field[this.yCord][this.xCord + 1].type == 'blocked'
-            || table.field[this.yCord][this.xCord + 1].type == 'blocked-door-A'
-            || table.field[this.yCord][this.xCord + 1].type == 'blocked-door-B'
-            || table.field[this.yCord][this.xCord + 1].type == 'blocked-door-C') {
+        if (blockedList.includes(table.field[this.yCord][this.xCord + 1].type)) {
             if (this.offset.x > 0) this.center_player();
             this.offset.x = Math.min(0, this.offset.x);
         }
